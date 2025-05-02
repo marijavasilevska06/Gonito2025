@@ -1,17 +1,14 @@
-/* Основен стил */
 body {
     font-family: sans-serif;
     background: #f9f9f9;
     margin: 0;
 }
 
-/* Навигација */
 nav {
     background: darkblue;
     color: white;
     padding: 1em;
     text-align: center;
-    flex-wrap: wrap;
 }
 
 nav a {
@@ -19,48 +16,45 @@ nav a {
     margin: 0 1em;
     text-decoration: none;
     display: inline-block;
-    margin-bottom: 0.5em;
+    padding: 0.5em;
 }
 
-/* Центрирани елементи */
 main.center, .center {
     text-align: center;
     margin: 2em auto;
     padding: 0 1em;
 }
 
-/* Табели */
-table {
+.logo {
+    max-width: 200px;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+table, .admin_table {
     margin: 2em auto;
     border-collapse: collapse;
     background: white;
     width: 90%;
-    max-width: 800px;
     border-radius: 10px;
+    border: #2d4870;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.admin_table {
-    margin: 2em auto;
-    border-collapse: collapse;
-    background: white;
-    width: 95%;
-    max-width: 1000px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    word-break: break-word;
 }
 
 th {
     background-color: #1c2e4a;
     color: white;
+    border: 1px #2d4870;
     padding: 0.7em;
+    font-size: 14px;
 }
 
 td {
     padding: 0.7em;
     border-bottom: 1px solid #2d4870;
+    font-size: 13px;
 }
 
 h2.center {
@@ -70,28 +64,20 @@ h2.center {
     color: #1c2e4a;
 }
 
-/* Статуси */
 .green {
     color: green;
 }
 
-/* Лого */
-.logo {
-    max-width: 200px;
-    margin-bottom: 1em;
-}
-
-/* Логин форма */
 .login-container {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1em;
 }
 
 .login-box {
     background-color: white;
-    padding: 30px 40px;
+    padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     width: 100%;
@@ -99,23 +85,24 @@ h2.center {
     text-align: center;
 }
 
-.login-box input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
+.login-box input,
 .login-box button {
     width: 100%;
     padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.login-box input {
+    border: 1px solid #ccc;
+}
+
+.login-box button {
     background-color: #1c2e4a;
     color: white;
     border: none;
-    border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
 }
 
 .login-box button:hover {
@@ -127,7 +114,6 @@ h2.center {
     margin-bottom: 10px;
 }
 
-/* Пагинација */
 .pagination {
     text-align: center;
     margin: 2em 0;
@@ -157,13 +143,6 @@ h2.center {
     pointer-events: none;
 }
 
-.page-link.nav {
-    font-weight: bold;
-    background-color: #e0e0e0;
-    padding: 6px 12px;
-}
-
-/* Footer */
 footer {
     background-color: #1c2e4a;
     color: white;
@@ -183,7 +162,6 @@ footer p {
     line-height: 1.6;
 }
 
-/* Централна слика на Home */
 .home-image {
     text-align: center;
     margin: 3em 0 1em;
@@ -191,52 +169,37 @@ footer p {
 
 .home-image img {
     max-width: 400px;
+    width: 100%;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive стилови */
+/* MOBILE RESPONSIVE TWEAKS */
 @media (max-width: 768px) {
     nav a {
         display: block;
         margin: 0.5em 0;
     }
 
-    table, .admin_table {
-        width: 95%;
-        font-size: 14px;
-    }
-
-    .login-box {
-        padding: 20px;
-        width: 90%;
-    }
-
-    .page-link {
-        padding: 5px 8px;
-        font-size: 13px;
-    }
-
-    .home-image img {
-        width: 90%;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    h2, h3 {
-        font-size: 18px;
-    }
-
-    td, th {
+    th, td {
+        font-size: 12px;
         padding: 0.5em;
     }
 
     .logo {
-        width: 140px;
+        max-width: 150px;
+    }
+
+    .login-box {
+        padding: 20px 20px;
+    }
+
+    .home-image img {
+        max-width: 90%;
+    }
+
+    table, .admin_table {
+        width: 95%;
     }
 }
