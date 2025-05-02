@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ панел</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+        }
+        .logout-button {
+            background-color: #1c2e4a;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logout-button:hover {
+            background-color: #2d4870;
+        }
+        .form-container {
+            text-align: center;
+            margin-bottom: 2em;
+        }
+        .form-container input {
+            margin: 5px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .form-container button {
+            background-color: #1c2e4a;
+            color: white;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #2d4870;
+        }
+        .action-buttons a {
+            margin: 0 4px;
+            padding: 6px 10px;
+            background-color: #1c2e4a;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .action-buttons a:hover {
+            background-color: #2d4870;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h2>Админ панел</h2>
+        <a href="/logout" class="logout-button">Одјави се</a>
+    </div>
+  
+
+    <div class="form-container">
+        <form method="post" action="/add">
+            <h3>Нов производ</h3>
+            <input name="code" placeholder="Шифра">
+            <input name="name" placeholder="Име">
+            <input name="price" placeholder="Цена">
+            <input name="sale_price" placeholder="Акциска цена (опц.)">
+            <button type="submit">Додади</button>
+        </form>
+    </div>
+    <form method="get" class="center ">
+        <input type="text" name="search" placeholder="Пребарај по име" value="{{ search }}">
+        <button type="submit" class="action-buttons">Барај</button>
+    </form>
+
+    <table class="admin_table">
+        <thead>
+            <tr><th>Шифра</th><th>Име</th><th>Цена</th><th>Акциска</th><th>Акции</th></tr>
+        </thead>
+        <tbody>
+            {% for p in products %}
+            <tr>
+                <td>{{ p.code }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.price }}</td>
+                <td>{{ p.sale_price or '' }}</td>
+                <td class="action-buttons">
+                    <a href="/edit/{{ p.id }}">Измени</a>
+                    <a href="/delete/{{ p.id }}">Избриши</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if pages > 1 %}
+    <div class="pagination">
+        {% if current_page > 1 %}
+            <a href="?page=1{% if search %}&search={{ search }}{% endif %}" class="page-link nav">«</a>
+            <a href="?page={{ current_page - 1 }}{% if search %}&search={{ search }}{% endif %}" class="page-link nav">&laquo;</a>
+        {% endif %}
+
+        {% set start = max(1, current_page - 2) %}
+        {% set end = min(pages, current_page + 2) %}
+
+        {% for i in range(start, end + 1) %}
+            <a href="?page={{ i }}{% if search %}&search={{ search }}{% endif %}" class="page-link {% if i == current_page %}active{% endif %}">{{ i }}</a>
+        {% endfor %}
+
+        {% if current_page < pages %}
+            <a href="?page={{ current_page + 1 }}{% if search %}&search={{ search }}{% endif %}" class="page-link nav">&raquo;</a>
+            <a href="?page={{ pages }}{% if search %}&search={{ search }}{% endif %}" class="page-link nav">»</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</body>
+</html>

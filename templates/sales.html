@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <title>Акции</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<header>
+    <nav>
+        <a href="/">Почетна</a>
+        <a href="/products">Производи</a>
+        <a href="/sales">Акции</a>
+        <a href="/login">Логирај се</a>
+    </nav>
+</header>
+<body>
+    <h2 class="center">Производи на акција</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Име</th>
+                <th>Редовна цена</th>
+                <th>Акциска цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in products %}
+            <tr>
+                <td>{{ p.name }}</td>
+                <td><s>{{ p.price }} ден</s></td>
+                <td class="green">{{ p.sale_price }} ден</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

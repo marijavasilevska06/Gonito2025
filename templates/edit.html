@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <title>Измени производ</title>
+</head>
+<body>
+    <h2>Измени производ</h2>
+    <form method="post">
+        <input name="code" value="{{ product.code }}">
+        <input name="name" value="{{ product.name }}">
+        <input name="price" value="{{ product.price }}">
+        <input name="sale_price" value="{{ product.sale_price }}">
+        <button type="submit">Сними</button>
+    </form>
+</body>
+</html>

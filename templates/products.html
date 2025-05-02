@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <title>Производи</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="/">Почетна</a>
+        <a href="/products">Производи</a>
+        <a href="/sales">Акции</a>
+        <a href="/login">Логирај се</a>
+    </nav>
+</header>
+
+<h2 class="center">Сите производи</h2>
+
+<form method="get" class="center">
+    <input type="text" name="search" placeholder="Пребарај по име" value="{{ search }}">
+    <button type="submit">Барај</button>
+</form>
+
+<table>
+    <thead>
+        <tr><th>Име</th><th>Цена</th></tr>
+    </thead>
+    <tbody>
+        {% for p in products %}
+        <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.price }} ден</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Pagination -->
+<div class="pagination">
+    {% set start = current_page - 2 if current_page - 2 > 0 else 1 %}
+    {% set end = current_page + 2 if current_page + 2 <= pages else pages %}
+
+    {% if current_page > 1 %}
+        <a href="?page=1{% if search %}&search={{ search }}{% endif %}" class="page-link nav">&laquo;&laquo;</a>
+        <a href="?page={{ current_page - 1 }}{% if search %}&search={{ search }}{% endif %}" class="page-link nav">&laquo;</a>
+    {% endif %}
+
+    {% for i in range(start, end + 1) %}
+        <a href="?page={{ i }}{% if search %}&search={{ search }}{% endif %}" class="page-link {% if i == current_page %}active{% endif %}">{{ i }}</a>
+    {% endfor %}
+
+    {% if current_page < pages %}
+        <a href="?page={{ current_page + 1 }}{% if search %}&search={{ search }}{% endif %}" class="page-link nav">&raquo;</a>
+        <a href="?page={{ pages }}{% if search %}&search={{ search }}{% endif %}" class="page-link nav">&raquo;&raquo;</a>
+    {% endif %}
+</div>
+
+</body>
+</html>

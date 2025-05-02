@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <title>Најава</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<header>
+    <nav>
+        <a href="/">Почетна</a>
+        <a href="/products">Производи</a>
+        <a href="/sales">Акции</a>
+        <a href="/login">Логирај се</a>
+    </nav>
+</header>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Админ најава</h2>
+            {% if error %}<p class="error">{{ error }}</p>{% endif %}
+            <form method="post">
+                <input type="text" name="username" placeholder="Корисничко име"><br>
+                <input type="password" name="password" placeholder="Лозинка"><br>
+                <button type="submit">Најави се</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
