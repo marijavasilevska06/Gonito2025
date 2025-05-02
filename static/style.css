@@ -1,40 +1,53 @@
+/* Основен стил */
 body {
     font-family: sans-serif;
     background: #f9f9f9;
     margin: 0;
 }
+
+/* Навигација */
 nav {
     background: darkblue;
     color: white;
     padding: 1em;
     text-align: center;
+    flex-wrap: wrap;
 }
+
 nav a {
     color: white;
     margin: 0 1em;
     text-decoration: none;
+    display: inline-block;
+    margin-bottom: 0.5em;
 }
+
+/* Центрирани елементи */
 main.center, .center {
     text-align: center;
     margin: 2em auto;
+    padding: 0 1em;
 }
+
+/* Табели */
 table {
     margin: 2em auto;
     border-collapse: collapse;
     background: white;
-    width: 60%;
+    width: 90%;
+    max-width: 800px;
     border-radius: 10px;
-    border: #2d4870;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 .admin_table {
     margin: 2em auto;
     border-collapse: collapse;
     background: white;
-    width: 70%;
+    width: 95%;
+    max-width: 1000px;
     border-radius: 10px;
-    border: #2d4870;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -42,13 +55,12 @@ table {
 th {
     background-color: #1c2e4a;
     color: white;
-    border: 1px #2d4870;
     padding: 0.7em;
 }
 
 td {
     padding: 0.7em;
-    border-bottom:1px solid #2d4870;
+    border-bottom: 1px solid #2d4870;
 }
 
 h2.center {
@@ -58,13 +70,18 @@ h2.center {
     color: #1c2e4a;
 }
 
+/* Статуси */
 .green {
     color: green;
 }
+
+/* Лого */
 .logo {
     max-width: 200px;
     margin-bottom: 1em;
 }
+
+/* Логин форма */
 .login-container {
     flex: 1;
     display: flex;
@@ -109,6 +126,8 @@ h2.center {
     color: red;
     margin-bottom: 10px;
 }
+
+/* Пагинација */
 .pagination {
     text-align: center;
     margin: 2em 0;
@@ -144,6 +163,7 @@ h2.center {
     padding: 6px 12px;
 }
 
+/* Footer */
 footer {
     background-color: #1c2e4a;
     color: white;
@@ -162,6 +182,8 @@ footer p {
     font-size: 14px;
     line-height: 1.6;
 }
+
+/* Централна слика на Home */
 .home-image {
     text-align: center;
     margin: 3em 0 1em;
@@ -172,4 +194,49 @@ footer p {
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive стилови */
+@media (max-width: 768px) {
+    nav a {
+        display: block;
+        margin: 0.5em 0;
+    }
+
+    table, .admin_table {
+        width: 95%;
+        font-size: 14px;
+    }
+
+    .login-box {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .page-link {
+        padding: 5px 8px;
+        font-size: 13px;
+    }
+
+    .home-image img {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    h2, h3 {
+        font-size: 18px;
+    }
+
+    td, th {
+        padding: 0.5em;
+    }
+
+    .logo {
+        width: 140px;
+    }
 }
